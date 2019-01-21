@@ -10,7 +10,16 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20190121130038) do
+ActiveRecord::Schema.define(version: 20190121225902) do
+
+  create_table "pictures", force: :cascade do |t|
+    t.string "name"
+    t.integer "imageable_id"
+    t.string "imageable_type"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["imageable_type", "imageable_id"], name: "index_pictures_on_imageable_type_and_imageable_id"
+  end
 
   create_table "posts", force: :cascade do |t|
     t.string "title"
